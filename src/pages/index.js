@@ -31,8 +31,8 @@ export default function Home() {
   }, [router]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-2xl font-semibold text-gray-700 animate-pulse">
+    <div className="">
+      <h1 className="">
         Cargando aplicación...
       </h1>
     </div>
