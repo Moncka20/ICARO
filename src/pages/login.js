@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useRouter } from "next/router";
+import styles from '../styles/loginPage.module.css'
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -70,64 +72,58 @@ export default function LoginPage() {
     }
   };
 
-  return (
-    <div className="">
-      <form
-        onSubmit={handleAuth}
-        className=""
-      >
-        <h2 className="">
-          {isRegistering ? "Registrar usuario" : "Iniciar sesión"}
-        </h2>
+return (
+  <div className={styles.container}>
+    <form onSubmit={handleAuth} className={styles.form}>
+      <h2 className={styles.title}>
+        {isRegistering ? "Registrar usuario" : "Iniciar sesión"}
+      </h2>
 
-        {isRegistering && (
-          <input
-            type="text"
-            placeholder="Nombre completo"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            className=""
-            required
-          />
-        )}
-
+      {isRegistering && (
         <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className=""
+          type="text"
+          placeholder="Nombre completo"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          className={styles.input}
           required
         />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className=""
-          required
-        />
+      )}
 
-        {error && <p className="">{error}</p>}
+      <input
+        type="email"
+        placeholder="Correo electrónico"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className={styles.input}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className={styles.input}
+        required
+      />
 
+      {error && <p className={styles.error}>{error}</p>}
+
+      <button type="submit" className={styles.button}>
+        {isRegistering ? "Registrarse" : "Iniciar sesión"}
+      </button>
+
+      <p className={styles.switchText}>
+        {isRegistering ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
         <button
-          type="submit"
-          className=""
+          type="button"
+          className={styles.switchButton}
+          onClick={() => setIsRegistering(!isRegistering)}
         >
-          {isRegistering ? "Registrarse" : "Iniciar sesión"}
+          {isRegistering ? "Inicia sesión" : "Regístrate"}
         </button>
-
-        <p className="">
-          {isRegistering ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
-          <button
-            type="button"
-            className=""
-            onClick={() => setIsRegistering(!isRegistering)}
-          >
-            {isRegistering ? "Inicia sesión" : "Regístrate"}
-          </button>
-        </p>
-      </form>
-    </div>
-  );
+      </p>
+    </form>
+  </div>
+)
 }
