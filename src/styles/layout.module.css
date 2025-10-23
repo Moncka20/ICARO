@@ -1,4 +1,3 @@
-/* Contenedor general */
 .layoutContainer {
   display: flex;
   min-height: 100vh;
@@ -8,7 +7,7 @@
 /* Sidebar */
 .sidebar {
   width: 16rem;
-  background-color: #0072ff; /* Azul principal */
+  background-color: #0072ff;
   color: white;
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@
   gap: 1rem;
 }
 
-/* Logo */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -24,7 +22,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* Navegación */
 .navButton {
   text-align: left;
   padding: 0.5rem;
@@ -37,7 +34,7 @@
 }
 
 .navButton:hover {
-  background-color: #00c6ff; /* Hover azul claro */
+  background-color: #00c6ff;
 }
 
 .activeNav {
@@ -46,7 +43,6 @@
   font-weight: bold;
 }
 
-/* Perfil */
 .profileSection {
   margin-top: auto;
   padding-top: 1rem;
@@ -108,3 +104,4 @@
   font-size: 1rem;
   color: #555;
 }
+

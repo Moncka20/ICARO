@@ -1,14 +1,14 @@
 import Layout from "../components/Layout";
 import styles from '../styles/layout.module.css';
 
-export default function Dashboard() {
+export default function Inventario() {
   return (
     <Layout>
       <div className={styles.header}>
         <div className={styles.headerText}>
-          <div className={styles.title}>Panel principal</div>
+          <div className={styles.title}>Inventario</div>
           <div className={styles.subtitle}>
-            Bienvenido al sistema de gestión de inventarios y ventas.
+            Desde aquí podrás gestionar tus productos.
           </div>
         </div>
       </div>

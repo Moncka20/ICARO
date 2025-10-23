@@ -1,10 +1,17 @@
 import Layout from "../components/Layout";
+import styles from '../styles/layout.module.css';
 
 export default function Ventas() {
   return (
     <Layout>
-      <h1 className="">Ventas</h1>
-      <p>Desde aquí podrás gestionar tus ventas.</p>
+      <div className={styles.header}>
+        <div className={styles.headerText}>
+          <div className={styles.title}>Ventas</div>
+          <div className={styles.subtitle}>
+            Desde aquí podrás gestionar tus ventas.
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 }
