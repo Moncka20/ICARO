@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import styles from '../../styles/usuario.module.css'
 
 export default function UsuarioForm({ initial = {}, onSubmit, onCancel }) {
   const [nombre, setNombre] = useState(initial.nombre || '')
@@ -15,22 +16,31 @@ export default function UsuarioForm({ initial = {}, onSubmit, onCancel }) {
   }
 
   return (
-    <form onSubmit={submit} className="space-y-2">
-      <div>
-        <label className="block text-sm">Nombre</label>
-        <input className="border p-1 w-full" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-      </div>
-      <div>
-        <label className="block text-sm">Rol</label>
-        <select className="border p-1 w-full" value={rol} onChange={(e) => setRol(e.target.value)}>
-          <option value="cajero">Cajero</option>
-          <option value="administrador">Administrador</option>
-        </select>
-      </div>
-      <div className="flex space-x-2">
-        <button type="submit" className="bg-blue-600 text-white px-3 py-1 rounded">Guardar</button>
-        <button type="button" onClick={onCancel} className="bg-gray-200 px-3 py-1 rounded">Cancelar</button>
-      </div>
-    </form>
+    <form onSubmit={submit} className={styles.formulario}>
+  <div>
+    <label className={styles.label}>Nombre</label>
+    <input
+      className={styles.input}
+      value={nombre}
+      onChange={(e) => setNombre(e.target.value)}
+      required
+    />
+  </div>
+  <div>
+    <label className={styles.label}>Rol</label>
+    <select
+      className={styles.select}
+      value={rol}
+      onChange={(e) => setRol(e.target.value)}
+    >
+      <option value="cajero">Cajero</option>
+      <option value="administrador">Administrador</option>
+    </select>
+  </div>
+  <div className={styles.botones}>
+    <button type="submit" className={styles.boton}>Guardar</button>
+    <button type="button" onClick={onCancel} className={styles.cancelar}>Cancelar</button>
+  </div>
+</form>
   )
 }
