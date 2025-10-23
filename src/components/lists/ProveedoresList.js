@@ -20,8 +20,8 @@ export default function ProveedoresList({ proveedores = [], onDelete = () => {},
         <td>{p.contacto}</td>
         <td>
           <div className={styles.acciones}>
-            <button className={styles.accion} onClick={() => onEdit(p)}>Editar</button>
-            <button className={styles.accion} onClick={() => onDelete(p.id)}>Eliminar</button>
+            <button className={styles.editar} onClick={() => onEdit(p)}>Editar</button>
+            <button className={styles.delete} onClick={() => onDelete(p.id)}>Eliminar</button>
           </div>
         </td>
       </tr>

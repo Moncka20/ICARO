@@ -20,25 +20,29 @@
 }
 
 .boton {
-  background-color: #0070f3;
+  padding: 12px 20px;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .boton:hover {
-  background-color: #005bb5;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
 }
 
 .cancelar {
-  background-color: #ff3b3b;
+  padding: 12px 20px;
+  background-color: #FF4242;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 10px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .cancelar:hover {
@@ -82,17 +86,34 @@
   gap: 0.5rem;
 }
 
-.accion {
-  background-color: #0070f3;
+.editar {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   color: white;
   border: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
+  font-weight: bold;
   transition: background-color 0.2s ease;
 }
 
-.accion:hover {
-  background-color: #005bb5;
+.editar:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.delete {
+ background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.delete:hover {
+  background-color: #ff0000;
 }

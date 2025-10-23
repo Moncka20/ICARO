@@ -20,8 +20,8 @@ export default function UsuariosList({ usuarios = [], onDelete = () => {}, onEdi
               <td>{u.rol}</td>
               <td>
                 <div className={styles.acciones}>
-                  <button className={styles.accion} onClick={() => onEdit(u)}>Editar</button>
-                  <button className={styles.accion} onClick={() => onDelete(u.id)}>Eliminar</button>
+                  <button className={styles.editar} onClick={() => onEdit(u)}>Editar</button>
+                  <button className={styles.delete} onClick={() => onDelete(u.id)}>Eliminar</button>
                 </div>
               </td>
             </tr>

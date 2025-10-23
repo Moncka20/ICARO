@@ -2,13 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/proveedores": "pages/proveedores.js",
   "/productos": "pages/productos.js",
-  "/usuarios": "pages/usuarios.js",
-  "/api/proveedores": "pages/api/proveedores.js",
-  "/dashboard": "pages/dashboard.js",
-  "/api/productos": "pages/api/productos.js",
-  "/ventas": "pages/ventas.js",
-  "/api/usuarios": "pages/api/usuarios.js",
-  "/login": "pages/login.js"
+  "/proveedores": "pages/proveedores.js",
+  "/usuarios": "pages/usuarios.js"
 }
