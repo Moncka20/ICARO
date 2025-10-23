@@ -40,7 +40,7 @@ export default function Layout({ children }) {
 
   const menuItems = [
     { name: "Dashboard", path: "/dashboard" },
-    { name: "Inventario", path: "/inventario" },
+    { name: "Inventario", path: "/productos" },
     { name: "Ventas", path: "/ventas" },
     { name: "Proveedores", path: "/proveedores" },
   ];

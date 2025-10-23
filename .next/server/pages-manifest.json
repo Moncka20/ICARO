@@ -2,5 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/login": "pages/login.js"
+  "/productos": "pages/productos.js",
+  "/dashboard": "pages/dashboard.js",
+  "/usuarios": "pages/usuarios.js",
+  "/api/productos": "pages/api/productos.js",
+  "/ventas": "pages/ventas.js"
 }
