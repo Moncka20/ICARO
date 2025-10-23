@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { supabase } from "../lib/supabaseClient";
 import { useEffect, useState } from "react";
+import styles from '../styles/layout.module.css';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -50,40 +51,39 @@ export default function Layout({ children }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* NAVBAR LATERAL */}
-      <aside className="w-64 bg-blue-700 text-white flex flex-col p-4 space-y-4">
-        <h2 className="text-2xl font-bold text-center mb-6">ICARO</h2>
+    <div className={styles.layoutContainer}>
+    {/* NAVBAR LATERAL */}
+    <aside className={styles.sidebar}>
+      <div className={styles.logo}>ICARO</div>
 
-        {menuItems.map((item) => (
-          <button
-            key={item.path}
-            onClick={() => router.push(item.path)}
-            className={`text-left p-2 rounded hover:bg-blue-800 ${
-              router.pathname === item.path ? "bg-blue-900" : ""
-            }`}
-          >
-            {item.name}
-          </button>
-        ))}
+      {menuItems.map((item) => (
+        <button
+          key={item.path}
+          onClick={() => router.push(item.path)}
+          className={`${styles.navButton} ${
+            router.pathname === item.path ? styles.activeNav : ''
+          }`}
+        >
+          {item.name}
+        </button>
+      ))}
 
-        <div className="mt-auto pt-4 border-t border-blue-500">
-          {perfil && (
-            <p className="text-sm mb-2">
-              {perfil.nombre} ({perfil.rol})
-            </p>
-          )}
-          <button
-            onClick={handleLogout}
-            className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
-          >
-            Cerrar sesión
-          </button>
-        </div>
-      </aside>
+      <div className={styles.profileSection}>
+        {perfil && (
+          <p className={styles.profileText}>
+            {perfil.nombre} ({perfil.rol})
+          </p>
+        )}
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Cerrar sesión
+        </button>
+      </div>
+    </aside>
 
-      {/* CONTENIDO PRINCIPAL */}
-      <main className="flex-1 p-8">{children}</main>
-    </div>
+    {/* CONTENIDO PRINCIPAL */}
+    <main className={styles.mainContent}>
+      {children}
+    </main>
+  </div>
   );
 }

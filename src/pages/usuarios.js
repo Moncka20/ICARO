@@ -3,6 +3,7 @@ import UsuariosList from '../components/lists/UsuariosList'
 import UsuarioForm from '../components/forms/UsuarioForm'
 import * as usuariosClient from '../lib/apiClients/usuariosClient'
 import Layout from '../components/Layout'
+import styles from '../styles/layout.module.css'
 
 export default function UsuariosPage() {
   const [usuarios, setUsuarios] = useState([])
@@ -58,9 +59,14 @@ export default function UsuariosPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Usuarios</h1>
+      <div className={styles.header}>
+        <div className={styles.headerText}>
+          <div className={styles.title}>Usuarios</div>
+          <div className={styles.subtitle}>Desde aquí podrás gestionar tus Usuarios.</div>
+        </div>
+      </div>
 
+      <div className="max-w-4xl mx-auto mt-6">
         <div className="mb-6">
           <h3 className="font-medium mb-2">Crear / Editar</h3>
           <UsuarioForm
@@ -73,9 +79,12 @@ export default function UsuariosPage() {
           />
         </div>
 
-        {loading ? <p>Cargando...</p> : <UsuariosList usuarios={usuarios} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
+        {loading ? (
+          <p>Cargando...</p>
+        ) : (
+          <UsuariosList usuarios={usuarios} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />
+        )}
       </div>
     </Layout>
   )
 }
-

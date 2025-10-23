@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react'
-import ProveedoresList from '../components/lists/ProveedoresList'
-import ProveedorForm from '../components/forms/ProveedorForm'
-import * as proveedoresClient from '../lib/apiClients/proveedoresClient'
-import Layout from '../components/Layout'
+import Layout from "../components/Layout";
+import styles from '../styles/layout.module.css';
 
 export default function ProveedoresPage() {
   const [proveedores, setProveedores] = useState([])
@@ -73,7 +70,7 @@ export default function ProveedoresPage() {
           />
         </div>
 
-        {loading ? <p>Cargando...</p> : <ProveedoresList proveedores={proveedores} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
+        {loading ? <p>Cargando...</p> : <ProveedoresList. proveedores={proveedores} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
       </div>
     </Layout>
   )
