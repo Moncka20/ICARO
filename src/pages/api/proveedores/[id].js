@@ -1,0 +1,28 @@
+import * as proveedoresController from '../../../controllers/proveedoresController'
+
+export default async function handler(req, res) {
+  const { id } = req.query
+  try {
+    if (req.method === 'GET') {
+      const r = await proveedoresController.get(id)
+      return res.status(200).json(r.data)
+    }
+
+    if (req.method === 'PUT') {
+      const r = await proveedoresController.update(id, req.body)
+      return res.status(r.status || 200).json(r.data)
+    }
+
+    if (req.method === 'DELETE') {
+      await proveedoresController.remove(id)
+      return res.status(204).end()
+    }
+
+    res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
+    res.status(405).end(`Method ${req.method} Not Allowed`)
+  } catch (err) {
+    console.error(err)
+    const status = err.status || 500
+    res.status(status).json({ error: err.message || 'Server error' })
+  }
+}
