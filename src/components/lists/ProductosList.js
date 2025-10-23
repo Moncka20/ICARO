@@ -1,27 +1,38 @@
 import React from 'react'
+import styles from '../../styles/producto.module.css'
 
 export default function ProductosList({ productos = [], onDelete = () => {}, onEdit = () => {} }) {
   return (
     <div>
-      <h2 className="text-lg font-medium mb-2">Productos</h2>
-      <table className="min-w-full bg-white">
+      <h2 className={styles.sectionTitle}>Productos</h2>
+      <table className={styles.table}>
         <thead>
           <tr>
-            <th className="px-4 py-2">Nombre</th>
-            <th className="px-4 py-2">Precio</th>
-            <th className="px-4 py-2">Stock</th>
-            <th className="px-4 py-2">Acciones</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {productos.map((p) => (
             <tr key={p.id}>
-              <td className="border px-4 py-2">{p.nombre}</td>
-              <td className="border px-4 py-2">{p.precio}</td>
-              <td className="border px-4 py-2">{p.stock}</td>
-              <td className="border px-4 py-2">
-                <button className="mr-2 text-blue-600" onClick={() => onEdit(p)}>Editar</button>
-                <button className="text-red-600" onClick={() => onDelete(p.id)}>Eliminar</button>
+              <td>{p.nombre}</td>
+              <td>${p.precio.toLocaleString()}</td>
+              <td>{p.stock}</td>
+              <td>
+                <button
+                  className={`${styles.actionButton} ${styles.editButton}`}
+                  onClick={() => onEdit(p)}
+                >
+                  Editar
+                </button>
+                <button
+                  className={`${styles.actionButton} ${styles.deleteButton}`}
+                  onClick={() => onDelete(p.id)}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

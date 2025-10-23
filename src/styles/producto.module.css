@@ -1,0 +1,114 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.inputField {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border 0.3s ease;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #0072ff;
+  box-shadow: 0 0 0 2px rgba(0, 114, 255, 0.2);
+}
+
+
+.buttonRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.buttonPrimary {
+  padding: 12px 20px;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buttonPrimary:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.buttonSecondary {
+  padding: 12px 20px;
+  background-color: #FF4242;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.buttonSecondary:hover {
+  background-color: #FF0000;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f9fafb;
+  color: #555;
+  font-weight: 600;
+}
+
+.table td {
+  color: #333;
+}
+
+.actionButton {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  color: white;
+  margin-right: 8px;
+}
+
+.editButton {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
+.deleteButton {
+  background-color: #ef4444;
+}
+
+.editButton:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.deleteButton:hover {
+  background-color: #dc2626;
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import styles from '../../styles/producto.module.css'
 
 export default function ProductoForm({ initial = {}, onSubmit, onCancel }) {
   const [nombre, setNombre] = useState(initial.nombre || '')
@@ -17,22 +18,34 @@ export default function ProductoForm({ initial = {}, onSubmit, onCancel }) {
   }
 
   return (
-    <form onSubmit={submit} className="space-y-2">
-      <div>
-        <label className="block text-sm">Nombre</label>
-        <input className="border p-1 w-full" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-      </div>
-      <div>
-        <label className="block text-sm">Precio</label>
-        <input type="number" step="0.01" className="border p-1 w-full" value={precio} onChange={(e) => setPrecio(e.target.value)} required />
-      </div>
-      <div>
-        <label className="block text-sm">Stock</label>
-        <input type="number" className="border p-1 w-full" value={stock} onChange={(e) => setStock(e.target.value)} required />
-      </div>
-      <div className="flex space-x-2">
-        <button type="submit" className="bg-blue-600 text-white px-3 py-1 rounded">Guardar</button>
-        <button type="button" onClick={onCancel} className="bg-gray-200 px-3 py-1 rounded">Cancelar</button>
+    <form onSubmit={submit} className={styles.formGroup}>
+      <input
+        className={styles.inputField}
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+        placeholder="Nombre"
+        required
+      />
+      <input
+        type="number"
+        step="0.01"
+        className={styles.inputField}
+        value={precio}
+        onChange={(e) => setPrecio(e.target.value)}
+        placeholder="Precio"
+        required
+      />
+      <input
+        type="number"
+        className={styles.inputField}
+        value={stock}
+        onChange={(e) => setStock(e.target.value)}
+        placeholder="Stock"
+        required
+      />
+      <div className={styles.buttonRow}>
+        <button type="submit" className={styles.buttonPrimary}>Guardar</button>
+        <button type="button" onClick={onCancel} className={styles.buttonSecondary}>Cancelar</button>
       </div>
     </form>
   )

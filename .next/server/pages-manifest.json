@@ -2,21 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-<<<<<<< HEAD
   "/proveedores": "pages/proveedores.js",
-  "/ventas": "pages/ventas.js",
-  "/api/usuarios": "pages/api/usuarios.js",
   "/usuarios": "pages/usuarios.js",
   "/productos": "pages/productos.js",
+  "/ventas": "pages/ventas.js",
   "/api/proveedores": "pages/api/proveedores.js",
-  "/dashboard": "pages/dashboard.js",
-  "/api/productos": "pages/api/productos.js"
-=======
-  "/usuarios": "pages/usuarios.js",
-  "/dashboard": "pages/dashboard.js",
-  "/productos": "pages/productos.js",
-  "/api/productos": "pages/api/productos.js",
-  "/ventas": "pages/ventas.js",
-  "/proveedores": "pages/proveedores.js"
->>>>>>> 8124a84a24ba8ad0e211517b2647ef6bc9288273
+  "/api/usuarios": "pages/api/usuarios.js"
 }

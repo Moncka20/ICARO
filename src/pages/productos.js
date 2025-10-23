@@ -3,6 +3,7 @@ import ProductosList from '../components/lists/ProductosList'
 import ProductoForm from '../components/forms/ProductoForm'
 import * as productosClient from '../lib/apiClients/productosClient'
 import Layout from '../components/Layout'
+import styles from '../styles/layout.module.css';
 
 export default function ProductosPage() {
   const [productos, setProductos] = useState([])
@@ -58,8 +59,14 @@ export default function ProductosPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Productos</h1>
+      <div className={styles.header}>
+        <div className={styles.headerText}>
+          <div className={styles.title}>Inventario</div>
+          <div className={styles.subtitle}>
+            Desde aquí podrás gestionar tus productos.
+          </div>
+        </div>
+      </div>
 
         <div className="mb-6">
           <h3 className="font-medium mb-2">Crear / Editar</h3>
@@ -74,7 +81,6 @@ export default function ProductosPage() {
         </div>
 
         {loading ? <p>Cargando...</p> : <ProductosList productos={productos} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
-      </div>
     </Layout>
   )
 }
