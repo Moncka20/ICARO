@@ -3,9 +3,9 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/proveedores": "pages/proveedores.js",
-  "/usuarios": "pages/usuarios.js",
   "/productos": "pages/productos.js",
   "/ventas": "pages/ventas.js",
+  "/api/productos": "pages/api/productos.js",
   "/api/proveedores": "pages/api/proveedores.js",
-  "/api/usuarios": "pages/api/usuarios.js"
+  "/login": "pages/login.js"
 }

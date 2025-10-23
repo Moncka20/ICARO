@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import Layout from "../components/Layout";
-import styles from '../styles/layout.module.css';
+import Layout from "../components/Layout"
+import styles from '../styles/layout.module.css'
 import ProveedoresList from '../components/lists/ProveedoresList'
 import ProveedorForm from '../components/forms/ProveedorForm'
 import * as proveedoresClient from '../lib/apiClients/proveedoresClient'
+import proveedorStyles from '../styles/proveedor.module.css';
 
 export default function ProveedoresPage() {
   const [proveedores, setProveedores] = useState([])
@@ -59,8 +60,14 @@ export default function ProveedoresPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Proveedores</h1>
+      <div className={styles.header}>
+        <div className={styles.headerText}>
+          <div className={styles.title}>Proveedores</div>
+          <div className={styles.subtitle}>
+            Desde aquí podrás gestionar tus proveedores.
+          </div>
+        </div>
+      </div>
 
         <div className="mb-6">
           <h3 className="font-medium mb-2">Crear / Editar</h3>
@@ -75,7 +82,6 @@ export default function ProveedoresPage() {
         </div>
 
   {loading ? <p>Cargando...</p> : <ProveedoresList proveedores={proveedores} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
-      </div>
     </Layout>
   )
 }
