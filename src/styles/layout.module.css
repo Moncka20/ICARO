@@ -1,0 +1,110 @@
+/* Contenedor general */
+.layoutContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 16rem;
+  background-color: #0072ff; /* Azul principal */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Navegación */
+.navButton {
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.navButton:hover {
+  background-color: #00c6ff; /* Hover azul claro */
+}
+
+.activeNav {
+  background-color: white;
+  color: #0072ff;
+  font-weight: bold;
+}
+
+/* Perfil */
+.profileSection {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #ffffff;
+}
+
+.profileText {
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Botón de cerrar sesión */
+.logoutButton {
+  padding: 10px 20px;
+  background-color: #ef4444; /* rojo suave */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626; /* rojo intenso */
+}
+
+/* Área principal */
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  background-color: white;
+}
+
+/* Encabezado visual */
+.header {
+  background-color: #f9fafb;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0072ff;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+}
