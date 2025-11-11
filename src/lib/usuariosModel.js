@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient'
+import crypto from 'crypto'
 
 export async function listUsuarios({ limit = 100, offset = 0 } = {}) {
   const { data, error } = await supabase
@@ -22,9 +23,14 @@ export async function getUsuarioById(id) {
 }
 
 export async function createUsuario(payload) {
+  const toInsert = { ...payload }
+  if (toInsert.id == null) {
+    toInsert.id = crypto.randomUUID()
+  }
+
   const { data, error } = await supabase
     .from('usuarios')
-    .insert([payload])
+    .insert([toInsert])
     .select()
     .single()
 

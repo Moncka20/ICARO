@@ -3,16 +3,16 @@ import styles from '../../styles/proveedor.module.css';
 
 export default function ProveedorForm({ initial = {}, onSubmit, onCancel }) {
   const [nombre, setNombre] = useState(initial.nombre || '')
-  const [contacto, setContacto] = useState(initial.contacto || '')
+  const [telefono, setTelefono] = useState(initial.telefono || '')
 
   useEffect(() => {
     setNombre(initial.nombre || '')
-    setContacto(initial.contacto || '')
+    setTelefono(initial.telefono || '')
   }, [initial])
 
   const submit = (e) => {
     e.preventDefault()
-    onSubmit({ nombre, contacto })
+    onSubmit({ nombre, telefono })
   }
 
   return (
@@ -28,8 +28,8 @@ export default function ProveedorForm({ initial = {}, onSubmit, onCancel }) {
   <input
     type="text"
     placeholder="Contacto"
-    value={contacto}
-    onChange={(e) => setContacto(e.target.value)}
+    value={telefono}
+    onChange={(e) => setTelefono(e.target.value)}
     className={styles.input}
   />
   <button type="submit" className={styles.boton}>Guardar</button>

@@ -22,14 +22,24 @@ export async function getProveedorById(id) {
 }
 
 export async function createProveedor(payload) {
-  const { data, error } = await supabase
-    .from('proveedores')
-    .insert([payload])
-    .select()
-    .single()
+  // Try inserting as provided. If the schema doesn't contain the `contacto`
+  // column (PostgREST PGRST204), retry without that property so the insert
+  // can succeed on DBs that model the contact differently (e.g. contacto_id).
+  const { data, error } = await supabase.from('proveedores').insert([payload]).select().single()
 
-  if (error) throw error
-  return data
+  if (!error) return data
+
+  // If server complains about unknown 'contacto' column, retry without it.
+  const msg = String(error.message || '')
+  if (msg.includes("Could not find the 'contacto' column") || msg.includes("Could not find the \"contacto\" column")) {
+    const safePayload = { ...payload }
+    delete safePayload.contacto
+    const { data: data2, error: error2 } = await supabase.from('proveedores').insert([safePayload]).select().single()
+    if (error2) throw error2
+    return data2
+  }
+
+  throw error
 }
 
 export async function updateProveedor(id, payload) {

@@ -17,7 +17,9 @@ export default function ProveedoresList({ proveedores = [], onDelete = () => {},
     {proveedores.map((p) => (
       <tr key={p.id}>
         <td>{p.nombre}</td>
-        <td>{p.contacto}</td>
+        {/* Some DBs may store the contact as `contacto`, others as `contacto_id` or similar.
+            Use a safe fallback so the UI doesn't break when the column doesn't exist. */}
+        <td>{p.telefono}</td>
         <td>
           <div className={styles.acciones}>
             <button className={styles.editar} onClick={() => onEdit(p)}>Editar</button>
