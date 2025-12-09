@@ -11,6 +11,7 @@ export default function ProductosList({ productos = [], onDelete = () => {}, onE
             <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Proveedor</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@ export default function ProductosList({ productos = [], onDelete = () => {}, onE
               <td>{p.nombre}</td>
               <td>${p.precio.toLocaleString()}</td>
               <td>{p.stock}</td>
+              <td>{p.proveedor?.nombre || '-'}</td>
               <td>
                 <button
                   className={`${styles.actionButton} ${styles.editButton}`}
