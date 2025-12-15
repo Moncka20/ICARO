@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Layout from "../components/Layout"
 import styles from '../styles/layout.module.css'
+import style from '../styles/ventas.module.css'
 
 function sum(arr) { return arr.reduce((s, v) => s + (v || 0), 0) }
 
@@ -65,116 +66,134 @@ export default function Ventas() {
   }, [data])
 
   return (
-    <Layout>
-      <div className={styles.header}>
-        <div className={styles.headerText}>
-          <div className={styles.title}>Estadísticas de Ventas</div>
-          <div className={styles.subtitle}>Resumen rápido de rendimiento de ventas</div>
+  <Layout>
+    <div className={styles.header}>
+      <div className={styles.headerText}>
+        <div className={styles.title}>Estadísticas de Ventas</div>
+        <div className={styles.subtitle}>Resumen rápido de rendimiento de ventas</div>
+      </div>
+    </div>
+
+    <div className={style.ventasContainer}>
+      {loading && <p>Cargando estadísticas...</p>}
+      {!loading && error && (
+        <div className="alert alert-warning">
+          No se pudo cargar datos reales (/api/ventas). Mostrando ejemplo. Error: {error}
+        </div>
+      )}
+
+      {/* Tarjetas de estadísticas */}
+      <div className={style.statsGrid}>
+        <div className={style.statsCard}>
+          <div className={style.statsLabel}>Total vendido</div>
+          <div className={style.statsValue}>${stats.totalVendido.toFixed(2)}</div>
+        </div>
+        <div className={style.statsCard}>
+          <div className={style.statsLabel}>Número de ventas</div>
+          <div className={style.statsValue}>{stats.ventasCount}</div>
+        </div>
+        <div className={style.statsCard}>
+          <div className={style.statsLabel}>Promedio por venta</div>
+          <div className={style.statsValue}>${stats.promedio.toFixed(2)}</div>
         </div>
       </div>
 
-      <div style={{ padding: 24 }}>
-        {loading && <p>Cargando estadísticas...</p>}
-        {!loading && error && (
-          <div className="alert alert-warning">No se pudo cargar datos reales (/api/ventas). Mostrando ejemplo. Error: {error}</div>
-        )}
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 16 }}>
-          <div className="card p-3">
-            <div style={{ fontSize: 12, color: '#666' }}>Total vendido</div>
-            <div style={{ fontSize: 22, fontWeight: 700 }}>${stats.totalVendido.toFixed(2)}</div>
-          </div>
-          <div className="card p-3">
-            <div style={{ fontSize: 12, color: '#666' }}>Número de ventas</div>
-            <div style={{ fontSize: 22, fontWeight: 700 }}>{stats.ventasCount}</div>
-          </div>
-          <div className="card p-3">
-            <div style={{ fontSize: 12, color: '#666' }}>Promedio por venta</div>
-            <div style={{ fontSize: 22, fontWeight: 700 }}>${stats.promedio.toFixed(2)}</div>
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', gap: 16 }}>
-          <div style={{ flex: 1 }}>
-            <h5>Ventas por día</h5>
-            <div className="card p-3">
-              {Object.keys(stats.ventasPorDia).length === 0 && <p>No hay datos</p>}
-              {Object.entries(stats.ventasPorDia).map(([day, val]) => (
-                <div key={day} style={{ marginBottom: 8 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <div>{day}</div>
-                    <div>${Number(val).toFixed(2)}</div>
-                  </div>
-                  <div style={{ height: 8, background: '#eee', borderRadius: 4, marginTop: 6 }}>
-                    <div style={{ height: '100%', background: '#0d6efd', width: `${Math.min(100, (val / stats.totalVendido) * 100)}%`, borderRadius: 4 }} />
-                  </div>
+      {/* Ventas por día y Top productos */}
+      <div style={{ display: 'flex', gap: 16 }}>
+        <div className={style.section} style={{ flex: 1 }}>
+          <h5>Ventas por día</h5>
+          <div className={style.statsCard}>
+            {Object.keys(stats.ventasPorDia).length === 0 && <p>No hay datos</p>}
+            {Object.entries(stats.ventasPorDia).map(([day, val]) => (
+              <div key={day} className={style.dayRow}>
+                <div className={style.dayRowHeader}>
+                  <div>{day}</div>
+                  <div>${Number(val).toFixed(2)}</div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ width: 360 }}>
-            <h5>Top productos</h5>
-            <div className="card p-3">
-              {stats.topProductos.length === 0 && <p>No hay datos</p>}
-              <ol>
-                {stats.topProductos.slice(0,10).map((p, idx) => (
-                  <li key={p.nombre} style={{ marginBottom: 6 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <div>{p.nombre} <small style={{ color: '#666' }}>({p.qty} uds)</small></div>
-                      <div style={{ fontWeight: 700 }}>${p.ventas.toFixed(2)}</div>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+                <div className={style.progressBar}>
+                  <div
+                    className={style.progressFill}
+                    style={{
+                      width: `${Math.min(100, (val / stats.totalVendido) * 100)}%`
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div style={{ marginTop: 20 }}>
-          <h5>Lista de ventas (reciente)</h5>
-          <div className="card p-3">
-            {data === 0 && <p>No hay ventas</p>}
-            <table className="table table-sm">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Fecha</th>
-                  <th>Items</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map(v => (
-                  <tr key={v.id}>
-                      <td>{v.id}</td>
-                      <td>{new Date(v.created_at || v.createdAt).toLocaleString()}</td>
-                      <td>
-                        {
-                          (() => {
-                            const items = v.detalle_ventas || []
-                            if (items.length === 0) return <span>-</span>
-                            return (
-                              <details>
-                                <summary>{items.length} item{items.length > 1 ? 's' : ''}</summary>
-                                <ul style={{ margin: '8px 0 0 16px' }}>
-                                  {items.map((it, idx) => (
-                                    <li key={idx}>{(it.producto.nombre)} x{it.cantidad}{it.precio_unitario ? ` — $${Number(it.precio_unitario).toFixed(2)}` : ''}</li>
-                                  ))}
-                                </ul>
-                              </details>
-                            )
-                          })()
-                        }
-                      </td>
-                      <td>${Number(v.total).toFixed(2)}</td>
-                    </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className={`${style.section} ${style.topProductos}`}>
+          <h5>Top productos</h5>
+          <div className={style.statsCard}>
+            {stats.topProductos.length === 0 && <p>No hay datos</p>}
+            <ol>
+              {stats.topProductos.slice(0, 10).map((p) => (
+                <li key={p.nombre}>
+                  <div className={style.topRow}>
+                    <div>
+                      {p.nombre}{' '}
+                      <small>({p.qty} uds)</small>
+                    </div>
+                    <div style={{ fontWeight: 700 }}>${p.ventas.toFixed(2)}</div>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </div>
-    </Layout>
-  )
+
+      {/* Lista de ventas */}
+      <div className={style.section}>
+        <h5>Lista de ventas (reciente)</h5>
+        <div className={style.tableCard}>
+          {data.length === 0 && <p>No hay ventas</p>}
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Items</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((v) => (
+                <tr key={v.id}>
+                  <td>{v.id}</td>
+                  <td>{new Date(v.created_at || v.createdAt).toLocaleString()}</td>
+                  <td>
+                    {(() => {
+                      const items = v.detalle_ventas || []
+                      if (items.length === 0) return <span>-</span>
+                      return (
+                        <details>
+                          <summary>
+                            {items.length} item{items.length > 1 ? 's' : ''}
+                          </summary>
+                          <ul style={{ margin: '8px 0 0 16px' }}>
+                            {items.map((it, idx) => (
+                              <li key={idx}>
+                                {it.producto.nombre} x{it.cantidad}
+                                {it.precio_unitario
+                                  ? ` — $${Number(it.precio_unitario).toFixed(2)}`
+                                  : ''}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      )
+                    })()}
+                  </td>
+                  <td>${Number(v.total).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </Layout>
+)
 }

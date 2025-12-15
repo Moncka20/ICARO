@@ -1,0 +1,122 @@
+/* ===========================
+   Contenedor principal
+   =========================== */
+.ventasContainer {
+  padding: 24px;
+}
+
+/* ===========================
+   Tarjetas de estadísticas
+   =========================== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.statsCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.statsLabel {
+  font-size: 12px;
+  color: #666;
+}
+
+.statsValue {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ===========================
+   Ventas por día
+   =========================== */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h5 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dayRow {
+  margin-bottom: 8px;
+}
+
+.dayRowHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progressBar {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+
+.progressFill {
+  height: 100%;
+  background: #0072ff;
+  border-radius: 4px;
+}
+
+/* ===========================
+   Top productos
+   =========================== */
+.topProductos {
+  width: 360px;
+}
+
+.topProductos ol {
+  padding-left: 18px;
+}
+
+.topProductos li {
+  margin-bottom: 6px;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topRow small {
+  color: #666;
+}
+
+/* ===========================
+   Lista de ventas
+   =========================== */
+.tableCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.tableCard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableCard th,
+.tableCard td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.tableCard th {
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  padding-left: 4px;
+}

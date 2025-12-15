@@ -1,0 +1,330 @@
+/* ===========================
+   Contenedor principal
+   =========================== */
+.dashboardContainer {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* ===========================
+   Sección de productos
+   =========================== */
+.productSection {
+  flex: 2;
+}
+
+.searchBar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.qtyBox {
+  width: 110px;
+}
+
+.qtyLabel {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.qtyInput {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* ===========================
+   Tarjeta de producto
+   =========================== */
+.productCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.productInfo {
+  font-weight: 600;
+}
+
+.productDesc {
+  color: #555;
+  font-size: 13px;
+  margin-top: 4px; /* separación respecto al nombre */
+}
+
+.productPrice {
+  font-weight: 700;
+  color: #0072ff;
+}
+
+/* ===========================
+   Carrito
+   =========================== */
+.cartSection {
+  flex: 2;
+}
+
+.cartCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.cartList {
+  margin-bottom: 13px;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* alinea arriba */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cartItemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cartControls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 220px;
+}
+
+.lineTotal {
+  width: 100px;
+  text-align: right;
+  font-weight: 700;
+}
+
+.qtyInline {
+  align-self: flex-start;
+}
+
+.cartTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.totalValue {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.changeBox {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.changePositive {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.changeNegative {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* ===========================
+   Encabezado
+   =========================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0072ff;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* ===========================
+   Tarjetas generales
+   =========================== */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.qtyInputCarrito {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  line-height: 1.2;
+  margin-top: -5px;
+}
+
+.qtyInputPago {
+  width: 97%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  line-height: 1.2;
+}
+
+.qtyLabelVuelto {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+  padding: 1%;
+}
+
+/* ===========================
+   Botones
+   =========================== */
+.agregar {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.agregar:hover {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+}
+
+.delete {
+  background-color: #ef4444; /* rojo base */
+  color: white;
+  border: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.delete:hover {
+  background-color: #ff0000; /* rojo más intenso */
+}
+
+.nameRow {
+  display: flex;
+  align-items: center; /* alinea verticalmente el input con el texto */
+  gap: 10px;
+}
+
+.qtyInputSmall {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  line-height: 1.2;
+}
+
+.buttonJSON {
+  background: linear-gradient(to right, #d0d7e2, #4a6a85);
+  color: black;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.buttonJSON:hover {
+  background: linear-gradient(to right, #4a6a85, #d0d7e2);
+}
+
+.buttonEnviar {
+  background: linear-gradient(to right, #28a745, #218838);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.buttonEnviar:hover {
+  background: linear-gradient(to right, #218838, #28a745);
+}
+
+.buttonLimpiar {
+  background: linear-gradient(to right, #ffc107, #e0a800);
+  color: black;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.buttonLimpiar:hover {
+  background: linear-gradient(to right, #e0a800, #ffc107);
+}
