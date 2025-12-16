@@ -73,11 +73,15 @@ export default function ProductoForm({ initial = {}, onSubmit, onCancel }) {
         onChange={(e) => setProveedorId(e.target.value)}
       >
         <option value="">-- Seleccionar Proveedor (opcional) --</option>
-        {proveedores.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.nombre}
-          </option>
-        ))}
+        {proveedores.map((p) => {
+          const pId = typeof p.id === 'object' ? p.id.id : p.id
+          const pNombre = typeof p.nombre === 'object' ? p.nombre.nombre : p.nombre
+          return (
+            <option key={pId} value={pId}>
+              {pNombre || 'Sin nombre'}
+            </option>
+          )
+        })}
       </select>
       <div className={styles.buttonRow}>
         <button type="submit" className={styles.buttonPrimary}>Guardar</button>

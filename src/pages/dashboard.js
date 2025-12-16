@@ -8,6 +8,20 @@ function getField(obj, keys) {
   return undefined
 }
 
+function safeString(value) {
+  if (typeof value === 'string') return value
+  if (typeof value === 'number') return String(value)
+  if (value && typeof value === 'object' && value.nombre) return value.nombre
+  if (value && typeof value === 'object' && value.name) return value.name
+  return 'Desconocido'
+}
+
+function safeId(value) {
+  if (typeof value === 'string' || typeof value === 'number') return value
+  if (value && typeof value === 'object' && value.id) return value.id
+  return value
+}
+
 export default function Dashboard() {
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
@@ -105,7 +119,7 @@ export default function Dashboard() {
       metodo_pago: 'efectivo',
       total,
       created_at: new Date().toISOString(),
-      items: cart.map(i => ({ producto_id: i.product.id, qty: i.qty, precio_unitario: priceOf(i.product) }))
+      items: cart.map(i => ({ producto_id: safeId(i.product.id), qty: i.qty, precio_unitario: priceOf(i.product) }))
     }
 
     try {
@@ -203,7 +217,7 @@ return (
                     {getField(item.product, ['nombre','name','title']) || 'Sin nombre'}
                   </div>
                   <div className={style.productDesc}>
-                    {getField(item.product, ['proveedor', 'proveedor_nombre', 'marca']) || 'Proveedor desconocido'}
+                    {safeString(getField(item.product, ['proveedor', 'proveedor_nombre', 'marca']))}
                   </div>
                 </div>
 

@@ -14,20 +14,22 @@ export default function ProveedoresList({ proveedores = [], onDelete = () => {},
     </tr>
   </thead>
   <tbody>
-    {proveedores.map((p) => (
-      <tr key={p.id}>
-        <td>{p.nombre}</td>
-        {/* Some DBs may store the contact as `contacto`, others as `contacto_id` or similar.
-            Use a safe fallback so the UI doesn't break when the column doesn't exist. */}
-        <td>{p.telefono}</td>
-        <td>
-          <div className={styles.acciones}>
-            <button className={styles.editar} onClick={() => onEdit(p)}>Editar</button>
-            <button className={styles.delete} onClick={() => onDelete(p.id)}>Eliminar</button>
-          </div>
-        </td>
-      </tr>
-    ))}
+    {proveedores.map((p) => {
+      const pNombre = typeof p.nombre === 'string' ? p.nombre : (p.nombre?.nombre || 'Sin nombre')
+      const pTelefono = typeof p.telefono === 'string' ? p.telefono : (p.telefono?.telefono || '-')
+      return (
+        <tr key={p.id}>
+          <td>{pNombre}</td>
+          <td>{pTelefono}</td>
+          <td>
+            <div className={styles.acciones}>
+              <button className={styles.editar} onClick={() => onEdit(p)}>Editar</button>
+              <button className={styles.delete} onClick={() => onDelete(p.id)}>Eliminar</button>
+            </div>
+          </td>
+        </tr>
+      )
+    })}
   </tbody>
 </table>
     </div>

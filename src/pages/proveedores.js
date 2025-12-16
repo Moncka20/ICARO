@@ -10,6 +10,7 @@ export default function ProveedoresPage() {
   const [proveedores, setProveedores] = useState([])
   const [editing, setEditing] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [query, setQuery] = useState('')
 
   const fetchProveedores = async () => {
     setLoading(true)
@@ -58,6 +59,13 @@ export default function ProveedoresPage() {
     }
   }
 
+  // Filtrado de proveedores por nombre
+  const filtered = proveedores.filter((prov) => {
+    if (!query) return true
+    const nombre = String(prov?.nombre || prov?.name || '')
+    return nombre.toLowerCase().includes(query.toLowerCase())
+  })
+
   return (
     <Layout>
       <div className={styles.header}>
@@ -81,7 +89,32 @@ export default function ProveedoresPage() {
           />
         </div>
 
-  {loading ? <p>Cargando...</p> : <ProveedoresList proveedores={proveedores} onDelete={handleDelete} onEdit={(p) => setEditing(p)} />}
+        {/* Buscador debajo del formulario */}
+        <div style={{ marginBottom: '24px' }}>
+          <input
+            placeholder="Buscar proveedor por nombre..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '8px 12px',
+              marginTop: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+        </div>
+
+  {loading ? (
+    <p>Cargando...</p>
+  ) : (
+    <ProveedoresList
+      proveedores={filtered}
+      onDelete={handleDelete}
+      onEdit={(p) => setEditing(p)}
+    />
+  )}
     </Layout>
   )
 }
